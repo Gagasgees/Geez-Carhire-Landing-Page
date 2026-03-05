@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing Page Car Hire</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/breakpoint.css">
+    <link rel="stylesheet" href="assets/css/remixicon.css">
+</head>
+<body>
+    <!-- HEADER SECTION -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <h1>GEEZ CARHIRE</h1>
+                </div>
+                
+                <!-- Hamburger Menu Button -->
+                <button class="hamburger" id="hamburger">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item"><a href="#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="#features" class="nav-link">Features</a></li>
+                    <li class="nav-item"><a href="#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="booking.html" class="btn-cta" style="display: inline-block; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Book Now</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h2 class="hero-title">Affordable And Trusted Car Hire</h2>
+                <p class="hero-subtitle">Enjoy Free Booking and Reliable Service For Every Journey</p>
+                <div class="button-group">
+                    <a href="booking.html" class="btn-cta" style="display: inline-block; text-decoration: none; padding: 12px 30px; border-radius: 5px;">Book Now</a>
+                    <a href="#services" class="btn-hero" style="display: inline-block; text-decoration: none;">View Our Fleet</a>
+                </div>
+            </div>
+            <div class="hero-image-wrapper">
+                <div class="hero-image">
+                    <img src="assets/img/hero4.png" alt="Hero Car" />
+                    <img src="assets/img/hero1.png" alt="Hero Car" />
+                    <img src="assets/img/hero3.png" alt="Hero Car" />
+                    <img src="assets/img/hero2.png" alt="Hero Car" />
+                </div>
+                <div class="hero-badge">
+                    <i class="ri-star-fill"></i>
+                    <span>BEST CHOICE</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURE SECTION-->
+    <section class="features" id="features">
+        <div class="features-container">
+            <h2 class="section-title">Why Choose Us</h2>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <img src="assets/img/icon-fast.jpg" alt="Fast Service" />
+                    </div>
+                    <h3>Fast Service</h3>
+                    <p>Quick and efficient booking process for your convenience</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <img src="assets/img/icon-money.jpg" alt="Affordable Price" />
+                    </div>
+                    <h3>Affordable Price</h3>
+                    <p>Competitive rates with transparent pricing and no hidden fees</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <img src="assets/img/icon-phone.jpg" alt="24/7 Support" />
+                    </div>
+                    <h3>24/7 Support</h3>
+                    <p>Round the clock customer support available anytime you need</p>
+                </div>
+                <div class="feature-card reveal">
+                    <div class="feature-icon">
+                        <img src="assets/img/icon-service.jpg" alt="Quality Service" />
+                    </div>
+                    <h3>Quality Service</h3>
+                    <p>Professional and reliable service for all your travel needs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section id="services" class="services">
+        <div class="services-container">
+            <h2 class="section-title">Our Services</h2>
+            <div class="services-grid">
+
+                <div class="services-card reveal" data-img="assets/img/service6.png" data-price="6">              
+                    <img src="assets/img/service6.png" alt="Premium Car">
+                    <h4>Premium Car</h4>
+                    <p class="services-desc">Luxury and comfort with modern features for an unforgettable journey.</p>
+                    <div class="days-input-group">
+                        <label for="days-service6">Number of Days:</label>
+                        <input type="number" class="days-input" id="days-service6" min="1" value="1" placeholder="Enter number of days">
+                    </div>
+                    <p class="price" data-base-price="8">$8.00 / Day</p>
+                    <div class="services-buttons">
+                        <a href="booking.html" class="btn outline booking-btn" style="display: inline-block; text-decoration: none;">Booking</a>
+                        <button class="btn outline view-btn">View</button>
+                    </div>
+                </div>
+
+
+                <div class="services-card reveal" data-img="assets/img/service7.png" data-price="7">                  
+                    <img src="assets/img/service7.png" alt="Executive Car">
+                    <h4>Executive Car</h4>
+                    <p class="services-desc">Elegant and spacious with all premium amenities for business travel.</p>
+                    <div class="days-input-group">
+                        <label for="days-service7">Number of Days:</label>
+                        <input type="number" class="days-input" id="days-service7" min="1" value="1" placeholder="Enter number of days">
+                    </div>
+                    <p class="price" data-base-price="7">$7.00 / Day</p>
+                    <div class="services-buttons">
+                        <a href="booking.html" class="btn outline booking-btn" style="display: inline-block; text-decoration: none;">Booking</a>
+                        <button class="btn outline view-btn">View</button>
+                    </div>
+                </div>
+               
+                <div class="services-card reveal" data-img="assets/img/service3.png" data-price="6">               
+                    <img src="assets/img/service3.png" alt="Economy Car">
+                    <h4>Economy Car</h4>
+                    <p class="services-desc">Budget-friendly and fuel efficient, perfect for everyday commuting.</p>
+                    <div class="days-input-group">
+                        <label for="days-service3">Number of Days:</label>
+                        <input type="number" class="days-input" id="days-service3" min="1" value="1" placeholder="Enter number of days">
+                    </div>
+                    <p class="price" data-base-price="6.50">$6.50 / Day</p>
+                    <div class="services-buttons">
+                        <a href="booking.html" class="btn outline booking-btn" style="display: inline-block; text-decoration: none;">Booking</a>
+                        <button class="btn outline view-btn">View</button>
+                    </div>
+                </div>
+
+                <div class="services-card reveal" data-img="assets/img/service1.png" data-price="6">
+                    <img src="assets/img/service1.png" alt="Compact Car">
+                    <h4>Compact Car</h4>
+                    <p class="services-desc">Small, agile and perfect for city driving with easy maneuverability.</p>
+                    <div class="days-input-group">
+                        <label for="days-service1">Number of Days:</label>
+                        <input type="number" class="days-input" id="days-service1" min="1" value="1" placeholder="Enter number of days">
+                    </div>
+                    <p class="price" data-base-price="6">$6.00 / Day</p>
+                    <div class="services-buttons">
+                        <a href="booking.html" class="btn outline booking-btn" style="display: inline-block; text-decoration: none;">Booking</a>
+                        <button class="btn outline view-btn">View</button>
+                    </div>
+                </div>
+                
+                <div class="services-card reveal" data-img="assets/img/service5.png" data-price="7">
+                    <img src="assets/img/service5.png" alt="Family SUV">
+                    <h4>Family SUV</h4>
+                    <p class="services-desc">Spacious and comfortable for families with ample cargo space.</p>
+                    <div class="days-input-group">
+                        <label for="days-service5">Number of Days:</label>
+                        <input type="number" class="days-input" id="days-service5" min="1" value="1" placeholder="Enter number of days">
+                    </div>
+                    <p class="price" data-base-price="7.50">$7.50 / Day</p>
+                    <div class="services-buttons">
+                        <a href="booking.html" class="btn outline booking-btn" style="display: inline-block; text-decoration: none;">Booking</a>
+                        <button class="btn outline view-btn">View</button>
+                    </div>
+                </div>
+
+                <div class="services-card reveal" data-img="assets/img/service4.png" data-price="6">
+                    <img src="assets/img/service4.png" alt="Sports Car">
+                    <h4>Sports Car</h4>
+                    <p class="services-desc">High performance and thrilling ride for the ultimate driving experience.</p>
+                    <div class="days-input-group">
+                        <label for="days-service4">Number of Days:</label>
+                        <input type="number" class="days-input" id="days-service4" min="1" value="1" placeholder="Enter number of days">
+                    </div>
+                    <p class="price" data-base-price="6">$6.00 / Day</p>
+                    <div class="services-buttons">
+                        <a href="booking.html" class="btn outline booking-btn" style="display: inline-block; text-decoration: none;">Booking</a>
+                        <button class="btn outline view-btn">View</button>
+                    </div>
+                </div>
+                
+                <div class="services-card reveal" data-img="assets/img/service2.png" data-price="6">
+                    <img src="assets/img/service2.png" alt="Sedan">
+                    <h4>Sedan</h4>
+                    <p class="services-desc">Classic and reliable choice for comfortable and smooth driving.</p>
+                    <div class="days-input-group">
+                        <label for="days-service2">Number of Days:</label>
+                        <input type="number" class="days-input" id="days-service2" min="1" value="1" placeholder="Enter number of days">
+                    </div>
+                    <p class="price" data-base-price="6.50">$6.50 / Day</p>
+                    <div class="services-buttons">
+                        <a href="booking.html" class="btn outline booking-btn" style="display: inline-block; text-decoration: none;">Booking</a>
+                        <button class="btn outline view-btn">View</button>
+                    </div>
+                </div>
+
+                <div class="services-card reveal" data-img="assets/img/service8.png" data-price="6">
+                    <img src="assets/img/service8.png" alt="Luxury SUV">
+                    <h4>Luxury SUV</h4>
+                    <p class="services-desc">Premium SUV with all the luxury features and advanced technology.</p>
+                    <div class="days-input-group">
+                        <label for="days-service8">Number of Days:</label>
+                        <input type="number" class="days-input" id="days-service8" min="1" value="1" placeholder="Enter number of days">
+                    </div>
+                    <p class="price" data-base-price="6.50">$6.50 / Day</p>
+                    <div class="services-buttons">
+                        <a href="booking.html" class="btn outline booking-btn" style="display: inline-block; text-decoration: none;">Booking</a>
+                        <button class="btn outline view-btn">View</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section class="about" id="about">
+        <div class="about-container">
+            <h2 class="section-title">About Geez Carhire</h2>
+            <div class="about-gallery">
+                <div class="about-image about-image-large reveal">
+                    <img src="assets/img/content1.jpg" alt="Quality Service">
+                </div>
+                <div class="about-gallery-bottom">
+                    <div class="about-image reveal">
+                        <img src="assets/img/content2.jpg" alt="Modern Fleet">
+                    </div>
+                    <div class="about-image reveal">
+                        <img src="assets/img/content3.jpg" alt="Customer Care">
+                    </div>
+                </div>
+            </div>
+            <div class="about-content reveal">
+                <p>GEEZ CARHIRE is a trusted car rental service with a complete and professional fleet. We provide various quality vehicle options to meet your travel needs with competitive prices and excellent service.</p>
+                <a href="booking.html" class="btn-cta" style="display: inline-block; text-decoration: none; padding: 12px 30px; border-radius: 5px;">Book Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <h2 class="section-title">Contact Us</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info">
+                    <p class="contact-description">Have any questions ? We're here to help and would love to hear from you. Get in touch with us today!</p>
+                    <div class="contact-items-group">
+                        <div class="contact-item">
+                            <i class="ri-phone-line"></i>
+                            <div class="contact-details">
+                                <h4>Phone</h4>
+                                <p>+62 895-4246-88302</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="ri-mail-line"></i>
+                            <div class="contact-details">
+                                <h4>Email</h4>
+                                <p>info@geezcar.com</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="ri-map-pin-line"></i>
+                            <div class="contact-details">
+                                <h4>Location</h4>
+                                <p>Jl. Merdeka No. 123, Jakarta</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="contact-social-group">
+                        <h4 class="social-label">Follow Us</h4>
+                        <div class="contact-social">
+                            <a href="#" class="social-link" title="Facebook">
+                                <i class="ri-facebook-fill"></i>
+                            </a>
+                            <a href="#" class="social-link" title="Instagram">
+                                <i class="ri-instagram-line"></i>
+                            </a>
+                            <a href="#" class="social-link" title="Twitter">
+                                <i class="ri-twitter-fill"></i>
+                            </a>
+                            <a href="#" class="social-link" title="WhatsApp">
+                                <i class="ri-whatsapp-line"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" placeholder="Subject" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-cta">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta">
+        <div class="cta-container">
+            <h2 class="cta-title">Ready to Book Your Car ?</h2>
+            <div class="cta-content">
+                <img src="assets/img/img1.png" alt="Book Your Car" class="cta-image">
+                <div class="cta-right">
+                    <div class="cta-description">
+                        <p>Book your car in just a few clicks. Competitive rates and excellent service guaranteed. Reserve your ride today!</p>
+                    </div>
+                    <button class="btn-cta"><a href="booking.html" style="color: white; text-decoration: none;">Book Now</a></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHTBOX SECTION -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <div class="lightbox-content" id="lightboxContent">
+            <img class="lightbox-image" id="lightboxImage" src="" alt="Service Detail" />
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle"></h3>
+                <p id="lightboxDesc"></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Geez Carhire</h3>
+                    <p>Your trusted partner for affordable and reliable car rental services.</p>
+                </div>
+                <div class="footer-links-social">
+                    <div class="footer-section footer-quick-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="#home">Home</a></li>
+                            <li><a href="#features">Features</a></li>
+                            <li><a href="#services">Services</a></li>
+                            <li><a href="#about">About</a></li>
+                            <li><a href="#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section footer-follow-us">
+                        <h4>Follow Us</h4>
+                        <div class="footer-social">
+                            <a href="#" class="footer-social-link"><i class="ri-facebook-fill"></i></a>
+                            <a href="#" class="footer-social-link"><i class="ri-twitter-fill"></i></a>
+                            <a href="#" class="footer-social-link"><i class="ri-instagram-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Geez Carhire. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/scrollrelavel.js"></script>
+</body>
+</html>

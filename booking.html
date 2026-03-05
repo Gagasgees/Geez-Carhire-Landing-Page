@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - Geez Carhire</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/breakpoint.css">
+    <link rel="stylesheet" href="assets/css/remixicon.css">
+    <link rel="stylesheet" href="assets/css/booking.css">
+</head>
+<body>
+    <!-- HEADER SECTION -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <a href="index.html">
+                        <h1>GEEZ CARHIRE</h1>
+                    </a>
+                </div>
+                
+                <!-- Hamburger Menu Button -->
+                <button class="hamburger" id="hamburger">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </button>
+                
+                <!-- Navigation Menu -->
+                <ul class="nav-menu" id="nav-menu">
+                    <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+                    <li class="nav-item"><a href="index.html#features" class="nav-link">Features</a></li>
+                    <li class="nav-item"><a href="index.html#services" class="nav-link">Services</a></li>
+                    <li class="nav-item"><a href="index.html#about" class="nav-link">About</a></li>
+                    <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+                    <li class="nav-item"><a href="booking.html" class="btn-cta" style="display: inline-block; text-decoration: none; padding: 10px 20px; border-radius: 5px;">Book Now</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <!-- BOOKING FORM SECTION -->
+    <section class="booking-section">
+        <div class="booking-container">
+            <div class="booking-header">
+                <h1>Book Your Car</h1>
+                <p>Fill in the details below to complete your booking</p>
+            </div>
+
+            <form class="booking-form" id="bookingForm">
+                <!-- Personal Information -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" required placeholder="Enter your first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" required placeholder="Enter your last name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" required placeholder="Enter your phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address *</label>
+                        <input type="text" id="address" name="address" required placeholder="Enter your address">
+                    </div>
+                    <div class="form-group">
+                        <label for="carType">Select Car Type *</label>
+                        <select id="carType" name="carType" required>
+                            <option value="">-- Choose a car --</option>
+                            <option value="compact-car" data-price="6.00">Compact Car - $6.00/Day</option>
+                            <option value="sedan" data-price="6.50">Sedan - $6.50/Day</option>
+                            <option value="economy-car" data-price="6.50">Economy Car - $6.50/Day</option>
+                            <option value="executive-car" data-price="7.00">Executive Car - $7.00/Day</option>
+                            <option value="family-suv" data-price="7.50">Family SUV - $7.50/Day</option>
+                            <option value="sports-car" data-price="6.00">Sports Car - $6.00/Day</option>
+                            <option value="luxury-suv" data-price="6.50">Luxury SUV - $6.50/Day</option>
+                            <option value="premium-car" data-price="8.00">Premium Car - $8.00/Day</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Booking Details -->
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="pickupDate">Pickup Date *</label>
+                        <input type="date" id="pickupDate" name="pickupDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="returnDate">Return Date *</label>
+                        <input type="date" id="returnDate" name="returnDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="pickupTime">Pickup Time *</label>
+                        <input type="time" id="pickupTime" name="pickupTime" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="numberOfDays">Number of Days *</label>
+                        <input type="number" id="numberOfDays" name="numberOfDays" min="1" required placeholder="1">
+                    </div>
+                </div>
+
+                <!-- Special Requirements -->
+                <div class="form-group">
+                    <label for="specialRequirements">Special Requirements</label>
+                    <textarea id="specialRequirements" name="specialRequirements" rows="4" placeholder="Any special requests or requirements?"></textarea>
+                </div>
+
+                <!-- Payment Summary -->
+                <div class="payment-summary">
+                    <h3>Payment Summary</h3>
+                    <div class="summary-row">
+                        <span>Daily Rate:</span>
+                        <span id="summaryDailyRate">$0.00</span>
+                    </div>
+                    <div class="summary-row">
+                        <span>Number of Days:</span>
+                        <span id="summaryDays">0</span>
+                    </div>
+                    <div class="summary-row subtotal">
+                        <span>Subtotal:</span>
+                        <span id="summarySubtotal">$0.00</span>
+                    </div>
+                    <div class="summary-row discount">
+                        <span>Discount (5%):</span>
+                        <span id="summaryDiscount">-$0.00</span>
+                    </div>
+                    <div class="summary-row total">
+                        <span>Total Payment:</span>
+                        <span id="summaryTotal">$0.00</span>
+                    </div>
+                </div>
+
+                <!-- Terms & Conditions -->
+                <div class="form-group form-group-checkbox">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms">I agree to the terms and conditions *</label>
+                </div>
+
+                <!-- Buttons -->
+                <div class="booking-buttons">
+                    <button type="submit" class="btn-submit">Pay via WhatsApp</button>
+                    <button type="reset" class="btn-cancel">Clear Form</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Geez Carhire</h3>
+                    <p>Your trusted partner for affordable and reliable car rental services.</p>
+                </div>
+                <div class="footer-links-social">
+                    <div class="footer-section footer-quick-links">
+                        <h4>Quick Links</h4>
+                        <ul>
+                            <li><a href="index.html#home">Home</a></li>
+                            <li><a href="index.html#features">Features</a></li>
+                            <li><a href="index.html#services">Services</a></li>
+                            <li><a href="index.html#about">About</a></li>
+                            <li><a href="index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section footer-follow-us">
+                        <h4>Follow Us</h4>
+                        <div class="footer-social">
+                            <a href="#" class="footer-social-link"><i class="ri-facebook-fill"></i></a>
+                            <a href="#" class="footer-social-link"><i class="ri-twitter-fill"></i></a>
+                            <a href="#" class="footer-social-link"><i class="ri-instagram-fill"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Geez Carhire. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="assets/js/booking.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/lightbox.js"></script>
+    <script src="assets/js/scrollrelavel.js"></script>
+</body>
+</html>
