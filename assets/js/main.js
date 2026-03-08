@@ -40,160 +40,165 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Services drag/slide for horizontal scroll with smooth momentum
     const servicesGrid = document.querySelector('.services-grid');
+    
     let isDown = false;
     let startX = 0;
     let scrollLeft = 0;
-    let moved = false;
     let velocity = 0;
     let lastX = 0;
     let lastTime = 0;
-    let animationId = null;
-    let targetScroll = 0;
+    let rafId = null;
+    let moved = false;
+    
+    const FRICTION = 0.95;
+    const VELOCITY_MIN = 0.3;
+    const SENSITIVITY = 2;
 
     if (servicesGrid) {
-        // Smooth animation function for drag
-        const animateScroll = () => {
-            if (Math.abs(velocity) > 0.1) {
-                // Apply velocity with easing
-                targetScroll -= velocity;
-                
-                // Clamp scroll position
-                const maxScroll = servicesGrid.scrollWidth - servicesGrid.clientWidth;
-                targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
-                
-                servicesGrid.scrollLeft = targetScroll;
-                velocity *= 0.94; // friction
-                animationId = requestAnimationFrame(animateScroll);
+        const applyMomentum = () => {
+            if (Math.abs(velocity) > VELOCITY_MIN) {
+                servicesGrid.scrollLeft += velocity;
+                velocity *= FRICTION;
+                rafId = requestAnimationFrame(applyMomentum);
             } else {
                 velocity = 0;
-                animationId = null;
+                rafId = null;
             }
         };
 
-        // Mouse
+        // Mouse Down
         servicesGrid.addEventListener('mousedown', (e) => {
             isDown = true;
             moved = false;
-            servicesGrid.style.cursor = 'grabbing';
             startX = e.pageX;
-            lastX = startX;
+            lastX = e.pageX;
             scrollLeft = servicesGrid.scrollLeft;
-            targetScroll = scrollLeft;
             lastTime = Date.now();
             velocity = 0;
-            if (animationId) cancelAnimationFrame(animationId);
-        }, { passive: true });
+            servicesGrid.style.cursor = 'grabbing';
+            servicesGrid.style.userSelect = 'none';
+            if (rafId) cancelAnimationFrame(rafId);
+        });
 
+        // Mouse Move
+        servicesGrid.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            
+            const now = Date.now();
+            const timeDelta = Math.max(1, now - lastTime);
+            const currentX = e.pageX;
+            const diff = currentX - lastX;
+            
+            // Apply movement with sensitivity
+            servicesGrid.scrollLeft = scrollLeft - (currentX - startX) * SENSITIVITY;
+            
+            // Calculate velocity for momentum
+            if (timeDelta > 0) {
+                velocity = -(diff * SENSITIVITY) / timeDelta * 16; // Normalize for 60fps
+            }
+            
+            if (Math.abs(currentX - startX) > 5) {
+                moved = true;
+            }
+            
+            lastX = currentX;
+            lastTime = now;
+            scrollLeft = servicesGrid.scrollLeft;
+        });
+
+        // Mouse Up
         document.addEventListener('mouseup', () => {
             if (isDown) {
                 isDown = false;
                 servicesGrid.style.cursor = 'grab';
-                // Start momentum animation
-                if (Math.abs(velocity) > 0.5) {
-                    if (animationId) cancelAnimationFrame(animationId);
-                    animationId = requestAnimationFrame(animateScroll);
+                servicesGrid.style.userSelect = 'auto';
+                
+                if (moved && Math.abs(velocity) > VELOCITY_MIN) {
+                    if (rafId) cancelAnimationFrame(rafId);
+                    rafId = requestAnimationFrame(applyMomentum);
                 }
+                velocity = 0;
             }
         });
 
+        // Mouse Leave
         servicesGrid.addEventListener('mouseleave', () => {
             if (isDown) {
                 isDown = false;
                 servicesGrid.style.cursor = 'grab';
-                if (Math.abs(velocity) > 0.5) {
-                    if (animationId) cancelAnimationFrame(animationId);
-                    animationId = requestAnimationFrame(animateScroll);
+                servicesGrid.style.userSelect = 'auto';
+                
+                if (moved && Math.abs(velocity) > VELOCITY_MIN) {
+                    if (rafId) cancelAnimationFrame(rafId);
+                    rafId = requestAnimationFrame(applyMomentum);
                 }
+                velocity = 0;
             }
         });
 
-        servicesGrid.addEventListener('mousemove', (e) => {
-            if (!isDown) return;
-            moved = true;
-            const x = e.pageX;
-            const currentTime = Date.now();
-            const timeDelta = currentTime - lastTime;
-            
-            // Calculate delta (positive = drag right, negative = drag left)
-            const deltaX = lastX - x;
-            
-            // Calculate velocity (invert for correct direction)
-            if (timeDelta > 0) {
-                velocity = -deltaX / timeDelta * 10; // inverted velocity
-            }
-            
-            // Update target scroll (invert delta for correct direction)
-            targetScroll = scrollLeft - deltaX;
-            
-            // Clamp to valid range
-            const maxScroll = servicesGrid.scrollWidth - servicesGrid.clientWidth;
-            targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
-            
-            // Update scroll position
-            servicesGrid.scrollLeft = targetScroll;
-            
-            lastX = x;
-            lastTime = currentTime;
-        }, { passive: true });
-
-        // Touch
+        // Touch Start
         servicesGrid.addEventListener('touchstart', (e) => {
             isDown = true;
             moved = false;
-            startX = e.touches[0].pageX;
-            lastX = startX;
+            startX = e.touches[0].clientX;
+            lastX = e.touches[0].clientX;
             scrollLeft = servicesGrid.scrollLeft;
-            targetScroll = scrollLeft;
             lastTime = Date.now();
             velocity = 0;
-            if (animationId) cancelAnimationFrame(animationId);
-        }, {passive: true});
+            if (rafId) cancelAnimationFrame(rafId);
+        }, { passive: true });
 
+        // Touch Move
         servicesGrid.addEventListener('touchmove', (e) => {
             if (!isDown) return;
-            moved = true;
-            const x = e.touches[0].pageX;
-            const currentTime = Date.now();
-            const timeDelta = currentTime - lastTime;
             
-            // Calculate delta (positive = drag right, negative = drag left)
-            const deltaX = lastX - x;
+            const now = Date.now();
+            const timeDelta = Math.max(1, now - lastTime);
+            const currentX = e.touches[0].clientX;
+            const diff = currentX - lastX;
             
-            // Calculate velocity (invert for correct direction)
+            // Apply movement with sensitivity
+            servicesGrid.scrollLeft = scrollLeft - (currentX - startX) * SENSITIVITY;
+            
+            // Calculate velocity for momentum
             if (timeDelta > 0) {
-                velocity = -deltaX / timeDelta * 10; // inverted velocity
+                velocity = -(diff * SENSITIVITY) / timeDelta * 16; // Normalize for 60fps
             }
             
-            // Update target scroll (invert delta for correct direction)
-            targetScroll = scrollLeft - deltaX;
+            if (Math.abs(currentX - startX) > 5) {
+                moved = true;
+            }
             
-            // Clamp to valid range
-            const maxScroll = servicesGrid.scrollWidth - servicesGrid.clientWidth;
-            targetScroll = Math.max(0, Math.min(targetScroll, maxScroll));
-            
-            // Update scroll position
-            servicesGrid.scrollLeft = targetScroll;
-            
-            lastX = x;
-            lastTime = currentTime;
-        }, {passive: true});
+            lastX = currentX;
+            lastTime = now;
+            scrollLeft = servicesGrid.scrollLeft;
+        }, { passive: true });
 
+        // Touch End
         servicesGrid.addEventListener('touchend', () => {
             if (isDown) {
                 isDown = false;
-                // Start momentum animation on touch end
-                if (Math.abs(velocity) > 0.5) {
-                    if (animationId) cancelAnimationFrame(animationId);
-                    animationId = requestAnimationFrame(animateScroll);
+                
+                if (moved && Math.abs(velocity) > VELOCITY_MIN) {
+                    if (rafId) cancelAnimationFrame(rafId);
+                    rafId = requestAnimationFrame(applyMomentum);
                 }
+                velocity = 0;
+            }
+        }, { passive: true });
+
+        // Prevent text selection during drag
+        servicesGrid.addEventListener('selectstart', (e) => {
+            if (moved) {
+                e.preventDefault();
             }
         });
 
-        // prevent clicks when dragging
+        // Prevent default link/button click when dragging
         servicesGrid.addEventListener('click', (e) => {
             if (moved) {
-                e.stopPropagation();
                 e.preventDefault();
+                e.stopPropagation();
             }
         }, true);
     }
